@@ -8,7 +8,7 @@ repositories {
 }
 
 def allureVersion = "2.21.0",
-    selenideVersion = "7.0.6"
+    selenideVersion = "6.19.1"
 
 allure {
     report {
@@ -41,12 +41,6 @@ tasks.withType(Test) {
             events "started", "skipped", "failed", "standard_error", "standard_out"
             exceptionFormat "short"
         }
-    }
-}
-
-task simple_test(type: Test) {
-    useJUnitPlatform {
-        includeTags("simple")
     }
 }
 
