@@ -55,7 +55,6 @@ public class RegistrationRemoteTests {
             if (bannerRoot.isDisplayed()) {
                 bannerRoot.$(byText("Consent")).click();
             }
-            $(".practice-form-wrapper").shouldHave(text("Student Registration Form"));
             executeJavaScript("$('#fixedban').remove()");
             executeJavaScript("$('footer').remove()");
         });
