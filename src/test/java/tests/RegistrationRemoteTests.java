@@ -51,12 +51,9 @@ public class RegistrationRemoteTests {
     void fillPracticeFormTest() {
         step("Open form", () -> {
             open("/automation-practice-form");
-            SelenideElement bannerRoot = $(".fc-consent-root");
-            if (bannerRoot.isDisplayed()) {
-                bannerRoot.$(byText("Consent")).click();
-            }
-            executeJavaScript("$('#fixedban').remove()");
-            executeJavaScript("$('footer').remove()");
+           $(".fc-button-label").click();
+           executeJavaScript("$('#fixedban').remove()");
+           executeJavaScript("$('footer').remove()");
         });
         step("Fill form", () -> {
             $("#firstName").setValue("Ivan");
