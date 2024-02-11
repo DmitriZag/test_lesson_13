@@ -1,6 +1,7 @@
 package tests;
 
 import com.codeborne.selenide.Configuration;
+import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import helpers.Attach;
 import io.qameta.allure.selenide.AllureSelenide;
@@ -12,7 +13,6 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.util.Map;
 
-import static com.codeborne.selenide.Condition.appear;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
@@ -51,6 +51,10 @@ public class RegistrationRemoteTests {
     void fillPracticeFormTest() {
         step("Open form", () -> {
             open("/automation-practice-form");
+            SelenideElement bannerRoot = $(".fc-consent-root");
+            if (bannerRoot.isDisplayed()) {
+                bannerRoot.$(byText("Consent")).click();
+            }
             $(".practice-form-wrapper").shouldHave(text("Student Registration Form"));
             executeJavaScript("$('#fixedban').remove()");
             executeJavaScript("$('footer').remove()");
